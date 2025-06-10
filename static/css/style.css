@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+nav{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.5);
+    background-color: #000;
+}
+
+.blog{
+    background-image: url(images/book-pile-table-with-apple_23-2147849970.avif);
+    background-size: cover;
+    background-position: center;
+    /* height: 100vh; */
+}
+
+.showlist{
+    background-image: url(images/school-board_93675-42058.avif);
+    background-size: cover;
+    background-position: center;
+    /* height: 100vh; */
+}
+
+.student-data .ta-body td img{
+    width: 60px;
+    height: 80px;
+    /* border-radius: 50%; */
+}
+
+.add-student{
+    background-image: url(images/desktop-wallpaper-background-for-student-portal-tip-college-student.jpg);
+    background-size: cover;
+    background-position: center;
+    /* height: 100vh; */
+}
+
+.payment{
+    background-image: url(images/pngtree-back-to-school-day-white-linear-stick-study-life-sticker-blackboard-picture-image_1155213.jpg);
+    background-size: cover;
+    background-position: center;
+    /* height: 100vh; */
+}
+
+.payment-show{
+    background-image: url(images/pngtree-back-to-school-blackboard-color-pencil-school-supplies-image_321416.jpg);
+    background-size: cover;
+    background-position: center;
+    /* height: 100vh; */
+}
+
+.attendence{
+    background-image: url(images/school-board_93675-42058.avif);
+    background-size: cover;
+    background-position: center;
+    /* height: 100vh; */
+}

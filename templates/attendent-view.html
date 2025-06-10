@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <!-- Content -->
+    <div class="attendence">
+        <div class="title pt-5 mb-0 pb-1">
+            <h4 class="fw-bold text-center text-white fs-1">Student Attendence</h4>
+        </div>
+        
+        <div class="payment-form-show mt-3 pb-3">
+            <div class="container">
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row pt-2">
+                        <div class="col-md-4">
+                            <label for="to" class="fw-bold text-white fs-5  mb-0">Select Student</label>
+                            <select class="form-select text-center" name="name" aria-label="Default select example">
+                                <option selected>Choose Student</option>
+                                {% for student in students  %}
+                                    <option value="{{ student.id }}">{{ student.fname }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="date" class="fw-bold text-white fs-5  mb-0">Date</label>
+                            <input type="date" class="form-control" name="date" id="from" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="status" class="fw-bold text-white fs-5  mb-0">Status</label>
+                            <select class="form-select text-center" name="status" aria-label="Default select example">
+                                <option value="Present" selected>Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row pt-4">
+                        <div class="col-md-12 text-center">
+                            <button class="btn btn-outline-primary mt-4 w-25 text-white fw-bold">Make Attendence</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+
+
+
+        <div> 
+
+            <div class="title pt-5 mb-0 pb-0">
+                <h4 class="fw-bold text-center text-white fs-1">Attendence Records</h4>
+            </div>
+
+            <div class="container">
+                <form action="/" method="post">
+                    <div class="row pt-2">
+                        <div class="col-md-6">
+                            <label for="date" class="fw-bold text-white fs-5 mb-0">Filter By Date</label>
+                            <input type="date" class="form-control" id="date" required>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-outline-primary mt-4 w-100 text-white fw-bold">Filter</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            
+            <div class="container pb-5">
+                <div class="row dropdown mt-4 bg-white rounded">
+                    <div class="col-md-12">
+                        <div class="title">
+                            
+                            <div class="table-responsive px-2 py-5">
+                                <table class="table">
+                                    <thead class="table-dark text-white">
+                                        <tr>
+                                            <th scope="col">S.No</th>
+                                            <th scope="col">Student Name</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for attendent in attendents %}
+                                        <tr>
+                                            <th scope="row">{{forloop.counter}}</th>
+                                            <td>{{attendent.student}}</td>
+                                            <td>{{attendent.date}}</td>
+                                            {% if attendent.status == 'Present' %}
+                                                <td class=""><span class="badge bg-success">Present</span></td>
+                                            {% else %}
+                                                <td class=""><span class="badge bg-danger">Absent</span></td>
+                                            {% endif %}
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

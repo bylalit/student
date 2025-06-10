@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <!-- Content -->
+    <div class="payment-show">
+        <div class="title pt-5 mb-0 pb-2">
+            <h4 class="fw-bold text-center text-white fs-1">Payment Details</h4>
+        </div>
+        
+        <div class="payment-form-show mt-3 pb-3">
+            <div class="container">
+
+                <form action="/" method="post">
+                    <div class="row pt-2">
+                        <div class="col-md-4">
+                            <label for="from" class="fw-bold text-white fs-5  mb-0">From Date</label>
+                            <input type="date" class="form-control" id="from" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="to" class="fw-bold text-white fs-5  mb-0">To Date</label>
+                            <input type="date" class="form-control" id="to" required>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-outline-primary mt-4 w-100 ms-2 text-white fw-bold">Search</button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+
+
+        <div class="container pb-5">
+            <div class="row dropdown mt-5 bg-white rounded">
+                <div class="col-md-12">
+                    <div class="title">
+                        <!-- <p class="fw-bold text-primary text-center fs-3 pt-4 mb-0">
+                            Payment Details
+                        </p> -->
+                        <div class="table-responsive px-2 py-5">
+                            <table class="table">
+                                <thead class="table-dark text-white">
+                                    <tr>
+                                        <th scope="col">S.No</th>
+                                        <th scope="col">Student Name</th>
+                                        <th scope="col">Payment Amount</th>
+                                        <th scope="col">Date paid</th>
+                                        <th scope="col">Take By Amount</th>
+                                        <th scope="col">Payment Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for fee in fees %}
+                                        <tr>
+                                            <th scope="row">{{forloop.counter}}</th>
+                                            <td>{{ fee.student }}</td>
+                                            <td>{{ fee.fees }}</td>
+                                            <td>{{ fee.date }}</td>
+                                            <td>{{ fee.take_by }}</td>
+                                            <td>{{ fee.payment_method }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+
+    </div>
+{% endblock %}

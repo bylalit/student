@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <!-- Content -->
+    <div class="payment">
+        <div class="title pt-5 mb-0 pb-2">
+            <h4 class="fw-bold text-center text-white fs-1">Take Payment</h4>
+        </div>
+        
+        <div class="payment-form mt-3 pb-5">
+            <div class="container d-flex justify-content-center">
+                <div class="row w-50 px-5 bg-white py-5 rounded">
+
+                    <div class="col-md-12">
+                        <form action="{% url "payment" %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group mb-3">
+                                <label for="name" class="fw-bold fs-5 pb-1">Student</label>
+                                <select class="form-select" id="name" name="name" aria-label="Default select example" required>
+                                    <option selected>Select a Student</option>
+                                    {% for student in students %}
+                                        <option value="{{ student.id }}">{{ student.fname }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="amount" class="fw-bold fs-5 pb-1">Payment Amount</label>
+                                <input type="text" class="form-control" name="amount" id="amount" placeholder="Enter Payment Amount" required>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="date" class="fw-bold fs-5 pb-1">Payment Date</label>
+                                <input type="date" class="form-control" name="date" id="date" required>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="payment" class="fw-bold fs-5 pb-1">Take By Payment</label>
+                                <input type="text" class="form-control" id="payment" name="payment" placeholder="Enter Take Payment Name" required>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="cash" class="fw-bold fs-5 pb-1">Payment Method</label>
+                                <select class="form-select" id="cash" name="method" aria-label="Default select example" required>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Online">Online</option>
+                                </select>`  form-group pt-3">
+                                <input type="submit" class="btn btn-primary fw-bold w-100" value="Submit Payment">
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

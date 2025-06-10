@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block content %}
+     <!-- Content -->
+     <div class="add-student">
+        <div class="title pt-5 mb-0 pb-2">
+            <h4 class="fw-bold text-center text-white fs-1">Add Student Details</h4>
+        </div>
+
+        <div class="container">
+
+            <div class="pt-2">
+                <form action="{% url "add-student" %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row pt-2">
+                        <div class="col-md-4">
+                            <p class="fw-bold text-info fs-5  mb-0">First Name</p>
+                            <input type="text" class="form-control" name='fname' placeholder="First Name" required>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="fw-bold text-info fs-5  mb-0">Middle Name</p>
+                            <input type="text" class="form-control" name='mname' placeholder="Middle Name" required>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="fw-bold text-info fs-5  mb-0">Last Name</p>
+                            <input type="text" class="form-control" name='lname' placeholder="Last Name" required>
+                        </div>
+                    </div>
+
+                    <div class="row pt-4">
+                        <div class="col-md-4">
+                            <p class="fw-bold text-info fs-5  mb-0">Gender</p>
+                            <select class="form-select" name='gender' aria-label="Default select example">
+                                <option selected>Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="fw-bold text-info fs-5  mb-0">Email</p>
+                            <input type="email" class="form-control" name='email' placeholder="Email" required>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="fw-bold text-info fs-5  mb-0">Phone Number</p>
+                            <input type="text" class="form-control" name='phone' placeholder="Phone Number" required>
+                        </div>
+                    </div>
+
+                    <div class="row pt-4">
+                        <div class="col-md-6">
+                            <p class="fw-bold text-info fs-5  mb-0">Address</p>
+                            <textarea class="form-control" rows="2" name='address' placeholder="Address" required></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="fw-bold text-info fs-5  mb-0">City</p>
+                            <input type="text" class="form-control" name='city' placeholder="City" required>
+                        </div>
+                    </div>
+
+                    <div class="row pt-4">
+                        <div class="col-md-4">
+                            <p class="fw-bold text-info fs-5  mb-0">Courses</p>
+                            <input type="text" class="form-control" name='courses' placeholder="Courses" required>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="fw-bold text-info fs-5  mb-0">Fees</p>
+                            <input type="text" class="form-control" name='amount' placeholder="Fees" required>
+                        </div>
+                        <div class="col-md-4">
+                            <p class="fw-bold text-info fs-5  mb-0">Date of Admision</p>
+                            <input type="date" class="form-control" name='date' placeholder="Date of Admision" required>
+                        </div>
+                    </div>
+
+                    <div class="row pt-4">
+                        <div class="col-md-12">
+                            <p class="fw-bold text-info fs-5  mb-0">Profile Picture</p>
+                            <input type="file" class="form-control" name='img' placeholder="Profile Picture" required>
+                        </div>
+                    </div>
+
+                    <div class="row pt-4 pb-5">
+                        <div class="col-md-12 d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary me-3">Submit</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            
+        </div>
+
+    </div>
+{% endblock %}

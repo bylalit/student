@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% load static %}
+{% block content %}
+    <!-- Conatent -->
+    <div class="showlist">
+        <div class="container-fluid">
+
+           <div class="search-box mx-5 pt-5">
+               <form class="d-flex" role="search">
+                   <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                   <button class="btn btn-outline-primary ms-2 text-white fw-bold" id="search" type="submit">Search</button>
+                 </form>
+           </div>
+
+
+           <div class="student-data mx-5 pt-1 pb-5">
+               <div class="row dropdown mt-5 bg-white rounded">
+                   <div class="col-md-12">
+                       <div class="title">
+                           <p class="fw-bold text-primary text-center fs-1 pt-4 mb-0">
+                               Students Details
+                           </p>
+                           <div class="table-responsive px-2 py-3">
+                               <table class="table">
+                                   <thead class="table-dark text-white">
+                                       <tr class="text-center">
+                                           <th scope="col">Sr. No</th>
+                                           <th scope="col">First Name</th>
+                                           <th scope="col">Last Name</th>
+                                           <th scope="col">Gender</th>
+                                           <th scope="col">Phone</th>
+                                           <th scope="col">City</th>
+                                           <th scope="col">Course</th>
+                                           <th scope="col">Fees</th>
+                                           <th scope="col">Paid Fees</th>
+                                           <th scope="col">Remaining Fees</th>
+                                           <th scope="col">Admission Date</th>
+                                           <th scope="col">Image</th>
+                                           <th scope="col">Action</th>
+                                       </tr>
+                                   </thead>
+                                   <tbody class="table-group-divider ta-body">
+                                        {% for student in students %}
+                                            <tr>
+                                                <th class="pt-3" scope="row">{{forloop.counter}}</th>
+                                                <td class="pt-3">{{ student.fname }}</td>
+                                                <td class="pt-3">{{ student.lname }}</td>
+                                                <td class="pt-3">{{ student.gender }}</td>
+                                                <td class="pt-3">{{ student.phone }}</td>
+                                                <td class="pt-3">{{ student.city }}</td>
+                                                <td class="pt-3">{{ student.courses }}</td>
+                                                <td class="pt-3">{{ student.amount }}</td>
+                                                <td class="pt-3">500</td>
+                                                <td class="pt-3">500</td>
+                                                <td class="pt-3">{{ student.date }}</td>
+                                                <td class="pt-3"><img src="media/{{ student.img }}" alt="profile"></td>
+                                                <td class="pt-3">
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <a href="{% url "student-view" student.id %}" class="btn btn-sm btn-success me-2"><i class="fa-solid fa-eye"></i></a>
+                                                        <a href="{% url "update-student" student.id %}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a href="{% url "delete-student" student.id %}" onclick="return confirm('Are you sure you want to delete?');" class="btn btn-sm btn-danger ms-2"><i class="fa-solid fa-trash-can"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                   </tbody>
+                               </table>
+                           </div>
+                           
+                       </div>
+                   </div>
+               </div>
+           
+           </div>
+
+       </div>
+   </div>
+   
+{% endblock %}
+
